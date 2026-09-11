@@ -11,27 +11,36 @@ clínico asigne mejor una capacidad de seguimiento que es limitada.
 
 ## Regenerar el análisis exploratorio
 
+### Linux y macOS
+
 ```bash
-git clone <URL-DE-ESTE-REPOSITORIO>
-cd capstone-p09-reingreso
-pip install -r requirements.txt
+git clone https://github.com/eduardova28/Capstone_P09_Reingreso.git
+cd Capstone_P09_Reingreso
+python3 -m pip install -r requirements.txt
 make eda
 ```
 
-`make eda` ejecuta el notebook de la etapa 2 de punta a punta, regenera las ocho
-figuras en `reports/figures/` y produce un informe HTML en `reports/`.
+### Windows (PowerShell)
 
-Sin `make` disponible:
+`make` no viene instalado en Windows. El equivalente es una sola línea:
 
-```bash
-jupyter nbconvert --to notebook --execute --inplace \
-  --ExecutePreprocessor.timeout=600 notebooks/02_E2_comprension_datos.ipynb
+```powershell
+git clone https://github.com/eduardova28/Capstone_P09_Reingreso.git
+cd Capstone_P09_Reingreso
+python -m pip install -r requirements.txt
+python -m nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=600 notebooks/02_E2_comprension_datos.ipynb
 ```
+
+Cualquiera de las dos rutas ejecuta el notebook de la etapa 2 de punta a punta,
+regenera las ocho figuras en `reports/figures/` y produce el informe HTML en
+`reports/`.
 
 Tiempo aproximado: 2 minutos. La única fuente de aleatoriedad es la muestra del
 SPLOM, con semilla fija (`SEED = 42`), así que las cifras y figuras son idénticas
 en cada ejecución.
 
+Las dependencias se declaran con versión mínima, no clavada, para que pip instale
+el binario que corresponde a cada versión de Python. Probado en 3.11, 3.12 y 3.13.
 ---
 
 ## Estructura
